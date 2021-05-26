@@ -10,7 +10,7 @@ namespace AnkaKafe.Data
     {
         public int MasaNo { get; set; }
         public List<SiparisDetay> SiparisDetaylar { get; set; } = new List<SiparisDetay>();
-        public SiparisDurum Durum { get; set; }  // SiparisDurum.Aktif; -> default zaten ama ekleyebilirsin 
+        public SiparisDurum Durum { get; set; } // = SiparisDurum.Aktif; -> default zaten ama ekleyebilirsin 
         public DateTime? AcilisZamani { get; set; } = DateTime.Now;
         public DateTime? KapanisZamani { get; set; }
         public decimal OdenenTutar { get; set; }
