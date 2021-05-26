@@ -25,7 +25,7 @@ namespace AnkaKafe.Data
             //}
             //return toplam;
 
-            return SiparisDetaylar.Sum(x => x.Tutar());
+            //return SiparisDetaylar.Sum(x => x.Tutar());
         }
     }
 }
