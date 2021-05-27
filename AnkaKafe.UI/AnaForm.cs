@@ -47,7 +47,7 @@ namespace AnkaKafe.UI
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             if (e.ClickedItem == tsmiUrunler)
-                new UrunlerForm().ShowDialog();
+                new UrunlerForm(db).ShowDialog();
             else if (e.ClickedItem == tsmiGecmisSiparisler)
                 new GecmisSiparislerForm(db).ShowDialog();
         }

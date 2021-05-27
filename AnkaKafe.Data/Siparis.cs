@@ -14,7 +14,7 @@ namespace AnkaKafe.Data
         public DateTime? AcilisZamani { get; set; } = DateTime.Now;
         public DateTime? KapanisZamani { get; set; }
         public decimal OdenenTutar { get; set; }
-        public string ToplamTutarTL => "₺" + ToplamTutar().ToString();
+        public string ToplamTutarTL =>  ToplamTutar().ToString("₺0.00");
 
 
         public decimal ToplamTutar()
