@@ -23,7 +23,9 @@ namespace AnkaKafe.UI
             _siparis = siparis;
             _blSiparisDetaylar = new BindingList<SiparisDetay>(siparis.SiparisDetaylar);
             InitializeComponent();
+            dgvData.AutoGenerateColumns = false; // otomatik sutun olusturmayi kapatmak icin 
             UrunleriGoster();
+            EkleFormSifirla();
             MasaNoGuncelle();
             FiyatGuncelle();
             DetaylariListele();
@@ -55,7 +57,11 @@ namespace AnkaKafe.UI
 
         private void btnEkle_Click(object sender, EventArgs e)
         {
+            if (cbUrun.SelectedIndex == -1|| nudAdet.Value <1)
+                    return; //secili urun yok, metottan cik
             Urun urun = (Urun)cbUrun.SelectedItem;
+
+           
             SiparisDetay siparisDetay = new SiparisDetay()
             {
                 UrunAd = urun.UrunAd,
@@ -66,6 +72,13 @@ namespace AnkaKafe.UI
             // _blSiparisDetaylar icinde _siparis.siparisDetaylar'i da icerdigi icin ayni zamanda Form'da gelen _siparis nesnesinin detaylarina da bu detayi ekler
             //DataGridView'i kendindeki verilerin degistigi konusunda bilgilendirir.
             _blSiparisDetaylar.Add(siparisDetay);
+            EkleFormSifirla();
+        }
+
+        private void EkleFormSifirla()
+        {
+            cbUrun.SelectedIndex = -1; // urunleri secmesi gerekir eger son urun kalsin istersen bu satiri yoruma al
+            nudAdet.Value = 1;
         }
 
         private void DetaylariListele()
@@ -83,6 +96,30 @@ namespace AnkaKafe.UI
                 defaultButton: MessageBoxDefaultButton.Button2
                 );
             e.Cancel = dr == DialogResult.No;
+        }
+
+        private void btnAnasayfayaDon_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void btnSiparisIptal_Click(object sender, EventArgs e)
+        {
+            SiparisKapat(SiparisDurum.Iptal, 0);
+        }
+
+        private void btnOdemeAl_Click(object sender, EventArgs e)
+        {
+            SiparisKapat(SiparisDurum.Odendi, _siparis.ToplamTutar());
+        }
+        private void SiparisKapat(SiparisDurum siparisDurum, decimal odenenTutar)
+        {
+            _siparis.OdenenTutar = odenenTutar;
+            _siparis.Durum = siparisDurum;
+            _siparis.KapanisZamani = DateTime.Now;
+            _db.AktifSiparisler.Remove(_siparis);
+            _db.GecmisSiparisler.Add(_siparis);
+            Close();
         }
     }
 }

@@ -49,7 +49,7 @@ namespace AnkaKafe.UI
             if (e.ClickedItem == tsmiUrunler)
                 new UrunlerForm().ShowDialog();
             else if (e.ClickedItem == tsmiGecmisSiparisler)
-                new GecmisSiparislerForm().ShowDialog();
+                new GecmisSiparislerForm(db).ShowDialog();
         }
 
         private void lvwMasalar_DoubleClick(object sender, EventArgs e)
@@ -67,6 +67,9 @@ namespace AnkaKafe.UI
             //todo : bu siparisi baska bir formda ac
             SiparisForm siparisForm = new SiparisForm(db, siparis);
             siparisForm.ShowDialog();
+            // siparis formu kapatildiktan sonra siparis durumunu kontrol et
+            if (siparis.Durum != SiparisDurum.Aktif)
+                lvi.ImageKey = "bos";
         }
         private Siparis SiparisBul(int masaNo)
         {
