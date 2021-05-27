@@ -61,7 +61,7 @@ namespace AnkaKafe.UI
                     return; //secili urun yok, metottan cik
             Urun urun = (Urun)cbUrun.SelectedItem;
 
-           
+                      
             SiparisDetay siparisDetay = new SiparisDetay()
             {
                 UrunAd = urun.UrunAd,

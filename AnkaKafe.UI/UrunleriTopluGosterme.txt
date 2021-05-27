@@ -1,0 +1,23 @@
+﻿btnEkle'nin icine
+SiparisDetay mevcut = _siparis.SiparisDetaylar.FirstOrDefault(x => x.UrunAd == urun.UrunAd);
+            if (mevcut == null)
+            {
+
+                SiparisDetay siparisDetay = new SiparisDetay()
+                {
+                    UrunAd = urun.UrunAd,
+                    BirimFiyat = urun.BirimFiyat,
+                    Adet = (int)nudAdet.Value
+
+                };
+                // _blSiparisDetaylar icinde _siparis.siparisDetaylar'i da icerdigi icin ayni zamanda Form'da gelen _siparis nesnesinin detaylarina da bu detayi ekler
+                //DataGridView'i kendindeki verilerin degistigi konusunda bilgilendirir.
+                _blSiparisDetaylar.Add(siparisDetay);
+            }
+            else
+            {
+                mevcut.Adet += (int)nudAdet.Value;
+                _blSiparisDetaylar.ResetBindings(): // binding listede degisiklik oldugunu bildir
+            } 
+           
+// urunleri topluca gostermek icin yukardaki kodu yaz ve new SiparisDetay()'i sil
