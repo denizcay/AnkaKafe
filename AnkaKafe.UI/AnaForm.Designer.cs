@@ -29,7 +29,9 @@ namespace AnkaKafe.UI
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lvwMasalar = new System.Windows.Forms.ListView();
+            this.masalarImageList = new System.Windows.Forms.ImageList(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.tsmiUrunler = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiGecmisSiparisler = new System.Windows.Forms.ToolStripMenuItem();
@@ -40,11 +42,19 @@ namespace AnkaKafe.UI
             // 
             this.lvwMasalar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvwMasalar.HideSelection = false;
+            this.lvwMasalar.LargeImageList = this.masalarImageList;
             this.lvwMasalar.Location = new System.Drawing.Point(0, 28);
             this.lvwMasalar.Name = "lvwMasalar";
             this.lvwMasalar.Size = new System.Drawing.Size(800, 422);
             this.lvwMasalar.TabIndex = 0;
             this.lvwMasalar.UseCompatibleStateImageBehavior = false;
+            this.lvwMasalar.DoubleClick += new System.EventHandler(this.lvwMasalar_DoubleClick);
+            // 
+            // masalarImageList
+            // 
+            this.masalarImageList.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.masalarImageList.ImageSize = new System.Drawing.Size(64, 64);
+            this.masalarImageList.TransparentColor = System.Drawing.Color.Transparent;
             // 
             // menuStrip1
             // 
@@ -94,5 +104,6 @@ namespace AnkaKafe.UI
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem tsmiUrunler;
         private System.Windows.Forms.ToolStripMenuItem tsmiGecmisSiparisler;
+        private System.Windows.Forms.ImageList masalarImageList;
     }
 }

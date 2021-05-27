@@ -42,8 +42,8 @@ namespace AnkaKafe.UI
             this.btnSiparisIptal = new System.Windows.Forms.Button();
             this.btnAnasayfayaDon = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.lblTutar = new System.Windows.Forms.Label();
             this.lblMasaNo = new System.Windows.Forms.Label();
+            this.lblTutar = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nudAdet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
             this.SuspendLayout();
@@ -81,6 +81,7 @@ namespace AnkaKafe.UI
             // 
             // cbUrun
             // 
+            this.cbUrun.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbUrun.FormattingEnabled = true;
             this.cbUrun.Location = new System.Drawing.Point(12, 35);
             this.cbUrun.Name = "cbUrun";
@@ -90,6 +91,7 @@ namespace AnkaKafe.UI
             // cbMasaNo
             // 
             this.cbMasaNo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbMasaNo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbMasaNo.FormattingEnabled = true;
             this.cbMasaNo.Location = new System.Drawing.Point(585, 36);
             this.cbMasaNo.Name = "cbMasaNo";
@@ -99,9 +101,19 @@ namespace AnkaKafe.UI
             // nudAdet
             // 
             this.nudAdet.Location = new System.Drawing.Point(169, 36);
+            this.nudAdet.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.nudAdet.Name = "nudAdet";
             this.nudAdet.Size = new System.Drawing.Size(108, 27);
             this.nudAdet.TabIndex = 5;
+            this.nudAdet.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // btnEkle
             // 
@@ -112,6 +124,7 @@ namespace AnkaKafe.UI
             this.btnEkle.TabIndex = 6;
             this.btnEkle.Text = "EKLE";
             this.btnEkle.UseVisualStyleBackColor = true;
+            this.btnEkle.Click += new System.EventHandler(this.btnEkle_Click);
             // 
             // btnTasi
             // 
@@ -185,17 +198,6 @@ namespace AnkaKafe.UI
             this.label4.TabIndex = 12;
             this.label4.Text = "Ödeme Tutarı:";
             // 
-            // lblTutar
-            // 
-            this.lblTutar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblTutar.AutoSize = true;
-            this.lblTutar.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblTutar.Location = new System.Drawing.Point(674, 298);
-            this.lblTutar.Name = "lblTutar";
-            this.lblTutar.Size = new System.Drawing.Size(56, 25);
-            this.lblTutar.TabIndex = 13;
-            this.lblTutar.Text = "7.55₺";
-            // 
             // lblMasaNo
             // 
             this.lblMasaNo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -209,13 +211,23 @@ namespace AnkaKafe.UI
             this.lblMasaNo.Text = "01";
             this.lblMasaNo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // lblTutar
+            // 
+            this.lblTutar.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblTutar.Location = new System.Drawing.Point(674, 298);
+            this.lblTutar.Name = "lblTutar";
+            this.lblTutar.Size = new System.Drawing.Size(100, 34);
+            this.lblTutar.TabIndex = 15;
+            this.lblTutar.Text = "offf";
+            this.lblTutar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // SiparisForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(822, 506);
-            this.Controls.Add(this.lblMasaNo);
             this.Controls.Add(this.lblTutar);
+            this.Controls.Add(this.lblMasaNo);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnAnasayfayaDon);
             this.Controls.Add(this.btnSiparisIptal);
@@ -253,7 +265,7 @@ namespace AnkaKafe.UI
         private System.Windows.Forms.Button btnSiparisIptal;
         private System.Windows.Forms.Button btnAnasayfayaDon;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label lblTutar;
         private System.Windows.Forms.Label lblMasaNo;
+        private System.Windows.Forms.Label lblTutar;
     }
 }
