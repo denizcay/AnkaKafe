@@ -70,7 +70,6 @@ namespace AnkaKafe.UI
             // 
             // label3
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label3.Location = new System.Drawing.Point(585, 10);
@@ -90,7 +89,6 @@ namespace AnkaKafe.UI
             // 
             // cbMasaNo
             // 
-            this.cbMasaNo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbMasaNo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbMasaNo.FormattingEnabled = true;
             this.cbMasaNo.Location = new System.Drawing.Point(585, 36);
@@ -128,7 +126,6 @@ namespace AnkaKafe.UI
             // 
             // btnTasi
             // 
-            this.btnTasi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnTasi.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnTasi.Location = new System.Drawing.Point(705, 34);
             this.btnTasi.Name = "btnTasi";
@@ -139,21 +136,24 @@ namespace AnkaKafe.UI
             // 
             // dgvData
             // 
-            this.dgvData.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvData.AllowUserToAddRows = false;
+            this.dgvData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvData.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvData.Location = new System.Drawing.Point(12, 88);
             this.dgvData.MinimumSize = new System.Drawing.Size(430, 370);
             this.dgvData.Name = "dgvData";
+            this.dgvData.ReadOnly = true;
+            this.dgvData.RowHeadersVisible = false;
             this.dgvData.RowHeadersWidth = 51;
             this.dgvData.RowTemplate.Height = 29;
-            this.dgvData.Size = new System.Drawing.Size(470, 384);
+            this.dgvData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvData.Size = new System.Drawing.Size(478, 384);
             this.dgvData.TabIndex = 8;
+            this.dgvData.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgvData_UserDeletingRow);
             // 
             // btnOdemeAl
             // 
-            this.btnOdemeAl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOdemeAl.BackColor = System.Drawing.Color.LimeGreen;
             this.btnOdemeAl.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnOdemeAl.Location = new System.Drawing.Point(649, 350);
@@ -165,7 +165,6 @@ namespace AnkaKafe.UI
             // 
             // btnSiparisIptal
             // 
-            this.btnSiparisIptal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSiparisIptal.BackColor = System.Drawing.Color.IndianRed;
             this.btnSiparisIptal.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnSiparisIptal.Location = new System.Drawing.Point(496, 350);
@@ -177,7 +176,6 @@ namespace AnkaKafe.UI
             // 
             // btnAnasayfayaDon
             // 
-            this.btnAnasayfayaDon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAnasayfayaDon.BackColor = System.Drawing.Color.Gold;
             this.btnAnasayfayaDon.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnAnasayfayaDon.Location = new System.Drawing.Point(496, 409);
@@ -189,7 +187,6 @@ namespace AnkaKafe.UI
             // 
             // label4
             // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label4.Location = new System.Drawing.Point(538, 298);
@@ -200,7 +197,6 @@ namespace AnkaKafe.UI
             // 
             // lblMasaNo
             // 
-            this.lblMasaNo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblMasaNo.BackColor = System.Drawing.Color.Tomato;
             this.lblMasaNo.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblMasaNo.ForeColor = System.Drawing.Color.White;
@@ -214,11 +210,10 @@ namespace AnkaKafe.UI
             // lblTutar
             // 
             this.lblTutar.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblTutar.Location = new System.Drawing.Point(674, 298);
+            this.lblTutar.Location = new System.Drawing.Point(660, 294);
             this.lblTutar.Name = "lblTutar";
             this.lblTutar.Size = new System.Drawing.Size(100, 34);
             this.lblTutar.TabIndex = 15;
-            this.lblTutar.Text = "offf";
             this.lblTutar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // SiparisForm
