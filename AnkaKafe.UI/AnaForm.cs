@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -13,15 +15,31 @@ namespace AnkaKafe.UI
 {
     public partial class AnaForm : Form
     {
-        KafeVeri db = new KafeVeri();
+        KafeVeri db;
 
         public AnaForm()
         {
-            OrnekUrunlerEkle(); //Ilerde kaldirilacak
+            VerileriOku();
+            // OrnekUrunlerEkle(); //Ilerde kaldirilacak
             InitializeComponent();
             masalarImageList.Images.Add("bos", Resource.bos);
             masalarImageList.Images.Add("dolu", Resource.dolu);
             MasalariOlustur();
+        }
+
+        private void VerileriOku()
+        {
+            try
+            {
+                string json = File.ReadAllText("veri.json");
+                db = JsonSerializer.Deserialize<KafeVeri>(json);
+            }
+            catch (Exception)
+            {
+
+                db = new KafeVeri();
+                OrnekUrunlerEkle();
+            }
         }
 
         private void OrnekUrunlerEkle()
@@ -39,11 +57,15 @@ namespace AnkaKafe.UI
                 lvi = new ListViewItem();
                 lvi.Tag = i; // masa numarasini Tag propertysinde saklamak
                 lvi.Text = "Masa " + i;
-                lvi.ImageKey = "bos";
+                lvi.ImageKey = MasaDoluMu(i) ? "dolu" : "bos";
                 lvwMasalar.Items.Add(lvi);
             }
         }
-
+        private bool MasaDoluMu(int masaNo)
+        {
+            // verilen sarti saglayan bir aktif siparis varsa true donecek
+            return db.AktifSiparisler.Any(x => x.MasaNo == masaNo);
+        }
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             if (e.ClickedItem == tsmiUrunler)
@@ -100,6 +122,16 @@ namespace AnkaKafe.UI
             return null;
         }
 
+        private void AnaForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            VerileriKaydet();
+        }
 
+        // https://docs.microsoft.com/en-us/dotnet/standard/serialization/system-text-json-how-to?pivots=dotnet-5-0
+        private void VerileriKaydet()
+        {
+            string json = JsonSerializer.Serialize(db, new JsonSerializerOptions() { WriteIndented=true}); // json'i okunakli yapma
+            File.WriteAllText("veri.json", json);
+        }
     }
 }
