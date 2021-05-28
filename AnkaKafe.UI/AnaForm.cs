@@ -64,13 +64,30 @@ namespace AnkaKafe.UI
                 siparis = new Siparis() { MasaNo = masaNo };
                 db.AktifSiparisler.Add(siparis);
             }
-            //todo : bu siparisi baska bir formda ac
+            // bu siparisi baska bir formda ac
             SiparisForm siparisForm = new SiparisForm(db, siparis);
+
+            siparisForm.MasaTasindi += SiparisForm_MasaTasindi;
+
             siparisForm.ShowDialog();
+
             // siparis formu kapatildiktan sonra siparis durumunu kontrol et
             if (siparis.Durum != SiparisDurum.Aktif)
                 lvi.ImageKey = "bos";
         }
+
+        private void SiparisForm_MasaTasindi(object sender, MasaTasindiEventArgs e)
+        {
+            foreach (ListViewItem lvi in lvwMasalar.Items)
+            {
+                int masaNo = (int)lvi.Tag;
+                if (masaNo == e.EskiMasaNo)
+                    lvi.ImageKey = "bos";
+                else if (masaNo == e.YeniMasaNo)
+                    lvi.ImageKey = "dolu";
+            }
+        }
+
         private Siparis SiparisBul(int masaNo)
         {
             // return db.AktifSiparisler.FirstOrDefault(x => x.MasaNo == masaNo);
@@ -82,5 +99,7 @@ namespace AnkaKafe.UI
             }
             return null;
         }
+
+
     }
 }
